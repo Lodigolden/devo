@@ -26,6 +26,7 @@ def create_python_project():
 
     create_directories()
     create_gitignore_file()
+    create_pytoml_file()
 
     print(
         "----------------------------------------------------------------------------------------------------"
@@ -72,3 +73,22 @@ def create_gitignore_file():
     shutil.copy(gitignore_location, os.getcwd())
 
     print(".gitignore file created")
+
+# --------------------------------------------------------------------------------------------------
+def create_pytoml_file():
+    """
+    Createes a pyproject.toml file in the root directory.
+
+    """
+
+    print(
+        "----------------------------------------------------------------------------------------------------"
+    )
+    cprint("Creating pyproject.toml file", attrs=["bold"])
+
+    gitignore_location = os.path.abspath(
+        os.path.join(os.path.abspath(__file__), "..", "..", "templates", "pyproject.toml")
+    )
+    shutil.copy(gitignore_location, os.getcwd())
+
+    print("pyproject.toml file created")
