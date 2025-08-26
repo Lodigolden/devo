@@ -49,8 +49,9 @@ def create_directories():
     )
     cprint("Creating directories", attrs=["bold"])
 
-    create_directory("src")
+    create_directory("build")
     create_directory("inc")
+    create_directory("src")
     create_directory("tests")
 
     print("Directories created")

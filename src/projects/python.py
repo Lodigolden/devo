@@ -74,6 +74,7 @@ def create_gitignore_file():
 
     print(".gitignore file created")
 
+
 # --------------------------------------------------------------------------------------------------
 def create_pytoml_file():
     """
@@ -87,7 +88,9 @@ def create_pytoml_file():
     cprint("Creating pyproject.toml file", attrs=["bold"])
 
     gitignore_location = os.path.abspath(
-        os.path.join(os.path.abspath(__file__), "..", "..", "templates", "pyproject.toml")
+        os.path.join(
+            os.path.abspath(__file__), "..", "..", "templates", "pyproject.toml"
+        )
     )
     shutil.copy(gitignore_location, os.getcwd())
 
