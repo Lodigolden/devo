@@ -25,12 +25,23 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 #---------------------------------------------------------------------------------------------------
+# Example external library added.
+#---------------------------------------------------------------------------------------------------
+# FetchContent_Declare(
+#     <external_library>
+#     GIT_REPOSITORY <external_library_url>
+#     GIT_TAG <branch_name>
+# )
+# FetchContent_MakeAvailable(<external_library>)
+
+#---------------------------------------------------------------------------------------------------
 # Source(s)
 #---------------------------------------------------------------------------------------------------
 set(LIB_SOURCES
     # ${SRC_DIR}/ex/ex.cpp
 )
 
+# Create library to call from tests/.
 add_library(${PROJECT_NAME}_lib ${LIB_SOURCES})
 target_include_directories(${PROJECT_NAME}_lib PUBLIC
     ${INC_DIR}
@@ -40,25 +51,33 @@ target_include_directories(${PROJECT_NAME}_lib PUBLIC
 add_executable(${PROJECT_NAME} 
     ${SRC_DIR}/main.cpp
 )
-target_link_libraries(${PROJECT_NAME}
-    PRIVATE ${PROJECT_NAME}_lib
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    ${PROJECT_NAME}_lib
+    # <external_library>
 )
+
+# Uncomment if external libraries are present.
+# target_include_directories(${PROJECT_NAME} PRIVATE
+#     #${<external_library>_SOURCE_DIR}/inc
+# )
 
 #---------------------------------------------------------------------------------------------------
 # Test(s)
 #---------------------------------------------------------------------------------------------------
-enable_testing()
+# Uncomment if testing is present.
 
-set(TESTS
-    # ${TEST_DIR}/ex_test.cpp
-)
+# enable_testing()
 
-add_executable(${PROJECT_NAME}_tests ${TESTS})
+# set(TESTS
+#     # ${TEST_DIR}/ex_test.cpp
+# )
 
-target_link_libraries(${PROJECT_NAME}_tests
-    GTest::gtest_main
-    ${PROJECT_NAME}_lib
-)
+# add_executable(${PROJECT_NAME}_tests ${TESTS})
 
-include(GoogleTest)
-gtest_discover_tests(${PROJECT_NAME}_tests)
+# target_link_libraries(${PROJECT_NAME}_tests
+#     GTest::gtest_main
+#     ${PROJECT_NAME}_lib
+# )
+
+# include(GoogleTest)
+# gtest_discover_tests(${PROJECT_NAME}_tests)
