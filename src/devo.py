@@ -10,11 +10,10 @@ from projects.python import create_python_project
 
 import argparse
 
-
 # --------------------------------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("template", help="Enter the project type here")
+    parser.add_argument("template", help="Enter the project type here:")
 
     args = parser.parse_args()
 
@@ -24,6 +23,6 @@ def main():
         case "python":
             create_python_project()
 
-
+# --------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
     main()
