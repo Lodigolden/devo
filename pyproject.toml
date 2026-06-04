@@ -4,7 +4,6 @@ version = "2025.0.0"
 dependencies = [
     "argparse",
     "black",
-    "os",
     "sphinx",
     "termcolor"
 ]

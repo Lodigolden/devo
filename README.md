@@ -1,5 +1,16 @@
 # Overview
 A development environment that serves as a starting point for several project types.
 
+# User
 ## Supported Project Types
 - C++ (Software)
+
+# Developer
+## Instantiate Virtual Environment
+> python -m venv .venv
+
+### Windows
+.venv\Scripts\activate
+
+## Pulling Current Dependencies
+> pip install -e .
