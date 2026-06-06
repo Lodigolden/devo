@@ -1,9 +1,3 @@
-# Generic
-
-# C++-specific
-build/
-
-# Python-specific
 .venv
 **/__pycache__
-
+*.egg-info/

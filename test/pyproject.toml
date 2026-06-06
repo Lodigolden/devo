@@ -1,0 +1,6 @@
+[project]
+name = "template_project"
+version = "2025.0.0"
+dependencies = [
+    
+]
