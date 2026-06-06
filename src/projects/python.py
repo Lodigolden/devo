@@ -3,8 +3,6 @@
 # --------------------------------------------------------------------------------------------------
 from .base import Project
 
-import os
-import shutil
 from termcolor import colored, cprint
 
 # --------------------------------------------------------------------------------------------------
@@ -21,8 +19,8 @@ class Python(Project):
         cprint("Creating Python Project", attrs=["bold"])
 
         self.create_directories()
-        self.create_gitignore_file()
-        self.create_pytoml_file()
+        super()._create_file(".gitignore")
+        super()._create_file("pyproject.toml")
 
         super()._create_break()
         cprint("Python Project Created", "green", attrs=["bold"])
@@ -41,31 +39,3 @@ class Python(Project):
         super()._create_directory("tests")
 
         print("Directories created")
-
-    # ----------------------------------------------------------------------------------------------
-    def create_gitignore_file(self):
-        """
-        Creates a .gitignore file in the root directory.
-        """
-
-        super()._create_break()
-        cprint("Creating .gitignore file", attrs=["bold"])
-
-        gitignore_location = os.path.abspath(os.path.join(self.file_path, ".gitignore"))
-        shutil.copy(gitignore_location, os.getcwd())
-
-        print(".gitignore file created")
-
-    # ----------------------------------------------------------------------------------------------
-    def create_pytoml_file(self):
-        """
-        Creates a pyproject.toml file in the root directory.
-        """
-
-        super()._create_break()
-        cprint("Creating pyproject.toml file", attrs=["bold"])
-
-        pytoml_location = os.path.abspath(os.path.join(self.file_path, "pyproject.toml"))
-        shutil.copy(pytoml_location, os.getcwd())
-
-        print("pyproject.toml file created")

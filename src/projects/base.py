@@ -2,6 +2,7 @@
 # Include(s)
 # --------------------------------------------------------------------------------------------------
 import os
+import shutil
 from termcolor import colored, cprint
 
 # --------------------------------------------------------------------------------------------------
@@ -54,3 +55,20 @@ class Project():
         print(
             "----------------------------------------------------------------------------------------------------"
         )
+
+    # ----------------------------------------------------------------------------------------------
+    def _create_file(self, file_name):
+        """
+        Creates a new file from the templates folder.
+
+        Args:
+            file_name: The name of the file.
+        """
+
+        self._create_break()
+        cprint(f"Creating { file_name } file...", attrs=['bold'])
+
+        file_location = os.path.abspath(os.path.join(self.file_path, file_name))
+        shutil.copy(file_location, os.getcwd())
+
+        print(f"{ file_name } file created.")

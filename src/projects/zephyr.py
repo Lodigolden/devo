@@ -7,8 +7,6 @@
 # --------------------------------------------------------------------------------------------------
 from .base import Project
 
-import os
-import shutil
 from termcolor import colored, cprint
 
 # --------------------------------------------------------------------------------------------------
@@ -25,9 +23,9 @@ class Zephyr(Project):
         cprint("Creating Zephyr Project", attrs=["bold"])
 
         self.create_directories()
-        self.create_gitignore_file()
-        self.create_cmake_file()
-        self.create_conf_file()
+        super()._create_file(".gitignore")
+        super()._create_file("CMakeLists.txt")
+        super()._create_file("prj.conf")
 
         super()._create_break()
         cprint("Zephyr Project Created", "green", attrs=["bold"])
@@ -47,45 +45,3 @@ class Zephyr(Project):
         super()._create_directory("src")
 
         print("Directories created")
-
-    # ----------------------------------------------------------------------------------------------
-    def create_gitignore_file(self):
-        """
-        Creates a .gitignore file in the root directory.
-        """
-
-        super()._create_break()
-        cprint("Creating .gitignore file", attrs=["bold"])
-
-        gitignore_location = os.path.abspath(os.path.join(self.file_path, ".gitignore"))
-        shutil.copy(gitignore_location, os.getcwd())
-
-        print(".gitignore file created")
-
-    # ----------------------------------------------------------------------------------------------
-    def create_cmake_file(self):
-        """
-        Creates a CMakeLists.txt file in the root directory.
-        """
-
-        super()._create_break()
-        cprint("Creating CMakeLists.txt file", attrs=["bold"])
-
-        cmake_location = os.path.abspath(os.path.join(self.file_path, "CMakeLists.txt"))
-        shutil.copy(cmake_location, os.getcwd())
-
-        print("CMakeLists.txt file created")
-
-    # ----------------------------------------------------------------------------------------------
-    def create_conf_file(self):
-        """
-        Creates a prj.conf file in the root directory.
-        """
-
-        super()._create_break()
-        cprint("Creating prf.conf file", attrs=["bold"])
-
-        conf_location = os.path.abspath(os.path.join(self.file_path, "prj.conf"))
-        shutil.copy(conf_location, os.getcwd())
-
-        print("prj.conf file created")
