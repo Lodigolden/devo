@@ -7,6 +7,7 @@
 # --------------------------------------------------------------------------------------------------
 from projects.cpp_sw import Cpp_Sw
 from projects.python import Python
+from projects.zephyr import Zephyr
 
 import argparse
 
@@ -22,6 +23,8 @@ def main():
             Python()
         case 'cpp_sw':
             Cpp_Sw()
+        case 'zephyr':
+            Zephyr()
 
 # --------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
