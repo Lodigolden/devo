@@ -5,23 +5,23 @@
 # --------------------------------------------------------------------------------------------------
 # Include(s)
 # --------------------------------------------------------------------------------------------------
-from projects.cpp_sw import create_cpp_project
-from projects.python import create_python_project
+from projects.cpp_sw import Cpp_Sw
+from projects.python import Python
 
 import argparse
 
 # --------------------------------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("template", help="Enter the project type here:")
+    parser.add_argument('-t', '--type', help='Enter Project Type')
 
     args = parser.parse_args()
 
-    match args.template:
-        case "cpp_sw":
-            create_cpp_project()
-        case "python":
-            create_python_project()
+    match args.type:
+        case 'python':
+            Python()
+        case 'cpp_sw':
+            Cpp_Sw()
 
 # --------------------------------------------------------------------------------------------------
 if __name__ == "__main__":

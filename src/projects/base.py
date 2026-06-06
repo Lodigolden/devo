@@ -7,13 +7,22 @@ from termcolor import colored, cprint
 # --------------------------------------------------------------------------------------------------
 # Base class for project instantiation.
 # --------------------------------------------------------------------------------------------------
-class Project(self):
+class Project():
     # ----------------------------------------------------------------------------------------------
-    def __init__(self):
-        pass
+    def __init__(self, asset_path):
+        """
+        The parameterized constructor creates a file path object to the location of assets.
+
+        Args:
+            asset_path: Path to all files created during build.
+        """
+
+        self.file_path = os.path.abspath(
+            os.path.join(os.path.abspath(__file__), "..", "..", "templates", asset_path)
+        )
 
     # ----------------------------------------------------------------------------------------------
-    def _create_directory(new_directory):
+    def _create_directory(self, new_directory):
         """
         Creates a new directory.
 
@@ -35,3 +44,13 @@ class Project(self):
             )
         except OSError as e:
             cprint(f"Error creating directory: { e }", "red")
+
+    # ----------------------------------------------------------------------------------------------
+    def _create_break(self):
+        """
+        Prints a deliminator in the console.
+        """
+
+        print(
+            "----------------------------------------------------------------------------------------------------"
+        )

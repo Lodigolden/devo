@@ -12,5 +12,8 @@ A development environment that serves as a starting point for several project ty
 ### Windows
 .venv\Scripts\activate
 
+### Linux
+source .venv/bin/activate
+
 ## Pulling Current Dependencies
 > pip install -e .
