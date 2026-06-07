@@ -19,29 +19,12 @@ class Cpp_Sw(Project):
 
         super().__init__("cpp_sw")
 
-        super()._create_break()
+        super().create_break()
         cprint("Creating C++ (Software) Project", attrs=["bold"])
 
-        self.create_directories()
-        super()._create_file("CMakeLists.txt")
-        super()._create_file(".gitignore")
+        super().create_directories(["build", "inc", "src", "tests"])
+        super().create_files(["CMakeLists.txt", ".gitignore"])
 
-        super()._create_break()
+        super().create_break()
         cprint("C++ (Software) Project Created", "green", attrs=["bold"])
-        super()._create_break()
-
-    # ----------------------------------------------------------------------------------------------
-    def create_directories(self):
-        """
-        Creates all directories for a new C++ (SW) project.
-        """
-
-        super()._create_break()
-        cprint("Creating directories", attrs=["bold"])
-
-        super()._create_directory("build")
-        super()._create_directory("inc")
-        super()._create_directory("src")
-        super()._create_directory("tests")
-
-        print("Directories created")
+        super().create_break()

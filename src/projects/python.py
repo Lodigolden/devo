@@ -15,27 +15,12 @@ class Python(Project):
 
         super().__init__("python")
 
-        super()._create_break()
+        super().create_break()
         cprint("Creating Python Project", attrs=["bold"])
 
-        self.create_directories()
-        super()._create_file(".gitignore")
-        super()._create_file("pyproject.toml")
+        super().create_directories(["src", "tests"])
+        super().create_files([".gitignore", "pyproject.toml"])
 
-        super()._create_break()
+        super().create_break()
         cprint("Python Project Created", "green", attrs=["bold"])
-        super()._create_break()
-
-    # ----------------------------------------------------------------------------------------------
-    def create_directories(self):
-        """
-        Creates all directories for a new Python project.
-        """
-
-        super()._create_break()
-        cprint("Creating directories")
-
-        super()._create_directory("src")
-        super()._create_directory("tests")
-
-        print("Directories created")
+        super().create_break()

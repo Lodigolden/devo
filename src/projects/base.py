@@ -23,6 +23,45 @@ class Project():
         )
 
     # ----------------------------------------------------------------------------------------------
+    def create_break(self):
+        """
+        Prints a deliminator in the console.
+        """
+
+        print(
+            "----------------------------------------------------------------------------------------------------"
+        )
+
+    # ----------------------------------------------------------------------------------------------
+    def create_directories(self, directories):
+        """
+        Creates all directories for a project.
+
+        Args:
+            directories: A list of all directories to be created.
+        """
+
+        self.create_break()
+        cprint("Creating directories...", attrs=['bold'])
+
+        for directory in directories:
+            self._create_directory(directory)
+
+        print("Directories created.")
+
+    # ----------------------------------------------------------------------------------------------
+    def create_files(self, files):
+        """
+        Creates all files for a project.
+
+        Args:
+            files: A list of all files to be created.
+        """
+
+        for file in files:
+            self._create_file(file)
+
+    # ----------------------------------------------------------------------------------------------
     def _create_directory(self, new_directory):
         """
         Creates a new directory.
@@ -45,17 +84,7 @@ class Project():
             )
         except OSError as e:
             cprint(f"Error creating directory: { e }", "red")
-
-    # ----------------------------------------------------------------------------------------------
-    def _create_break(self):
-        """
-        Prints a deliminator in the console.
-        """
-
-        print(
-            "----------------------------------------------------------------------------------------------------"
-        )
-
+    
     # ----------------------------------------------------------------------------------------------
     def _create_file(self, file_name):
         """
@@ -65,7 +94,7 @@ class Project():
             file_name: The name of the file.
         """
 
-        self._create_break()
+        self.create_break()
         cprint(f"Creating { file_name } file...", attrs=['bold'])
 
         file_location = os.path.abspath(os.path.join(self.file_path, file_name))
