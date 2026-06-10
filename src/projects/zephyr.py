@@ -7,8 +7,6 @@
 # --------------------------------------------------------------------------------------------------
 from .base import Project
 
-from termcolor import colored, cprint
-
 # --------------------------------------------------------------------------------------------------
 class Zephyr(Project):
     # ----------------------------------------------------------------------------------------------
@@ -19,12 +17,13 @@ class Zephyr(Project):
 
         super().__init__("zephyr")
 
-        super().create_break()
-        cprint("Creating Zephyr Project", attrs=["bold"])
+    # ----------------------------------------------------------------------------------------------
+    def create_project(self):
+        """
+        Passes project lists to parent method.
+        """
 
-        super().create_directories(["boards", "scripts", "src"])
-        super().create_files([".gitignore", "CMakeLists.txt", "prj.conf"])
+        directories = ["boards", "scripts", "src"]
+        files = [".gitignore", "CMakeLists.txt", "prj.conf"]
 
-        super().create_break()
-        cprint("Zephyr Project Created", "green", attrs=["bold"])
-        super().create_break()
+        super()._create_project(directories, files)

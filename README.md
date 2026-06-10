@@ -5,6 +5,7 @@ A development environment that serves as a starting point for different project 
 ## Supported Project Types
 - C++ (Software)
 - Python
+- Zephyr
 
 # Developer
 ## Instantiate Virtual Environment

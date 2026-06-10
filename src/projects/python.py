@@ -3,24 +3,23 @@
 # --------------------------------------------------------------------------------------------------
 from .base import Project
 
-from termcolor import colored, cprint
-
 # --------------------------------------------------------------------------------------------------
 class Python(Project):
     # ----------------------------------------------------------------------------------------------
     def __init__(self):
         """
-        The default constructor initializes the base class, and creates a Python project. 
+        The default constructor initializes the base class. 
         """
 
         super().__init__("python")
 
-        super().create_break()
-        cprint("Creating Python Project", attrs=["bold"])
+    # ----------------------------------------------------------------------------------------------
+    def create_project(self):
+        """
+        Passes project lists to parent method.
+        """
 
-        super().create_directories(["src", "tests"])
-        super().create_files([".gitignore", "pyproject.toml"])
+        directories = ["src", "tests"]
+        files = [".gitignore", "pyproject.toml"]
 
-        super().create_break()
-        cprint("Python Project Created", "green", attrs=["bold"])
-        super().create_break()
+        super()._create_project(directories, files)

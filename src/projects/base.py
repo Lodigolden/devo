@@ -18,9 +18,31 @@ class Project():
             asset_path: Path to all files created during build.
         """
 
+        self.type = asset_path
+
         self.file_path = os.path.abspath(
             os.path.join(os.path.abspath(__file__), "..", "..", "templates", asset_path)
         )
+
+    # ----------------------------------------------------------------------------------------------
+    def _create_project(self, directories, files):
+        """
+        Creates a new project.
+
+        Args:
+            directories: List of directories to create.
+            files: List of files to create.
+        """
+
+        self.create_break()
+        cprint(f"Creating { self.type } project...", attrs=['bold'])
+
+        self.create_directories(directories)
+        self.create_files(files)
+
+        self.create_break()
+        cprint("Project created.", 'green', attrs=['bold'])
+        self.create_break()
 
     # ----------------------------------------------------------------------------------------------
     def create_break(self):
